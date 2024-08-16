@@ -13,7 +13,7 @@ const itens = [
   { id: 4, title: "Quiz App", route: "/quiz-app" },
   { id: 5, title: "Language Translator", route: "/language-translator" },
 ];
-export const CarouselPage = () => {
+export function CarouselPage() {
   const navigate = useNavigate(); // Hook para navegação.
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -45,4 +45,4 @@ export const CarouselPage = () => {
       </CustomCarousel>
     </CarouselContainer>
   );
-};
+}

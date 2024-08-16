@@ -1,7 +1,7 @@
 import React from "react";
 import { MovieCard } from "./style";
 
-export  const Movie = ({movie}) => {
+export function Movie({ movie }) {
   return (
     <MovieCard key={movie.imdbID}>
       <img src={movie.Poster} alt={`${movie.Title} Poster`} />{" "}
@@ -10,6 +10,4 @@ export  const Movie = ({movie}) => {
       <p>{movie.Year}</p> {/* Exibe o ano do filme */}
     </MovieCard>
   );
-};
-
-
+}

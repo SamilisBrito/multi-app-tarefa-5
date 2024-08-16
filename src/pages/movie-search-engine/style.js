@@ -6,7 +6,7 @@ export const MoviesContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
-  max-height: 500px; /* Ajuste a altura máxima conforme necessário */
+  max-height: 100%; /* Ajuste a altura máxima conforme necessário */
   overflow-y: auto; /* Adiciona rolagem vertical se necessário */
   width: 100%;
 `;

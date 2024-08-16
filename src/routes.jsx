@@ -1,20 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import IPAddressFinder from "./components/IPAddressFinder";
-import LanguageTranslator from "./components/LanguageTranslator";
 import Login from "./components/Login";
-import QRCodeGenerator from "./components/QRCodeGenarator";
-import QuizApp from "./components/QuizApp";
-import TodoApp from "./components/TodoApp";
 
-import { MovieSearchEngine } from "./pages/movie-search-engine";
+
 import { CarouselPage } from "./pages/carousel-page";
-
+import { IPAddressFinder } from "./pages/ip-address-finder";
+import { MovieSearchEngine } from "./pages/movie-search-engine";
+import { Layout } from "./templates/layout";
+import { LanguageTranslator } from "./pages/language-translator";
+import { QRCodeGenerator } from "./pages/qr-code-genarator";
+import QuizApp from "./pages/quiz-app";
+import { TodoApp } from "./pages/todo-app";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
     children: [
       {
         path: "/qr-code-generator",
@@ -41,7 +41,6 @@ export const router = createBrowserRouter([
         element: <LanguageTranslator />,
       },
       {
-        path: "/carousel",
         index: true,
         element: <CarouselPage/>,
       },
