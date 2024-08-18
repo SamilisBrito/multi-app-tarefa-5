@@ -1,15 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./components/Login";
-
-
 import { CarouselPage } from "./pages/carousel-page";
 import { IPAddressFinder } from "./pages/ip-address-finder";
 import { MovieSearchEngine } from "./pages/movie-search-engine";
 import { Layout } from "./templates/layout";
 import { LanguageTranslator } from "./pages/language-translator";
 import { QRCodeGenerator } from "./pages/qr-code-genarator";
-import QuizApp from "./pages/quiz-app";
 import { TodoApp } from "./pages/todo-app";
+import { Login } from "./pages/login";
+import ProtectedRoute from "../src/components/protectedRoute/index";
+import { QuizApp } from "./pages/quiz-app";
 
 export const router = createBrowserRouter([
   {
@@ -18,31 +17,59 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/qr-code-generator",
-        element: <QRCodeGenerator />,
+        element: (
+          <ProtectedRoute>
+            <QRCodeGenerator />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/ip-address-finder",
-        element: <IPAddressFinder />,
+        element: (
+          <ProtectedRoute>
+            <IPAddressFinder />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/movie-search-engine",
-        element: <MovieSearchEngine />,
+        element: (
+          <ProtectedRoute>
+            <MovieSearchEngine />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/todo-app",
-        element: <TodoApp />,
+        element: (
+          <ProtectedRoute>
+            <TodoApp />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/quiz-app",
-        element: <QuizApp />,
+        element: (
+          <ProtectedRoute>
+            <QuizApp />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/language-translator",
-        element: <LanguageTranslator />,
+        element: (
+          <ProtectedRoute>
+            <LanguageTranslator />
+          </ProtectedRoute>
+        ),
       },
       {
         index: true,
-        element: <CarouselPage/>,
+        element: (
+          <ProtectedRoute>
+            <CarouselPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
