@@ -1,20 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Input, Title } from "../../assets/style-global";
 import { Content } from "../../components/content";
 import useFetch from "../../custom-hooks/useFetch";
 import { Movie } from "./components/movie";
-import { MoviesContainer } from "./style";
+import { MoviesContainer, NavPage, PaginationContainer, Total } from "./style";
 
 // Componente principal MovieSearchEngine
 export function MovieSearchEngine() {
   const { data, loading, error, request } = useFetch();
   const [query, setQuery] = useState(""); // Define o estado para a consulta de busca
+  const [queryCurrent, setQueryCurrent] = useState(""); // Define o estado para a consulta de busca
 
-  async function searchMovies() {
+  useEffect(() => {
+    if (queryCurrent) {
+      pagination(); // Chama a paginação sempre que queryCurrent for atualizado
+    }
+  }, [queryCurrent]);
+
+  function searchMovies() {
+    setQueryCurrent(query);
+  }
+
+  async function pagination(page = 1) {
     await request(
-      `http://www.omdbapi.com/?s=${query}&apikey=${
-        import.meta.env.VITE_APP_OMD_API_KEY
-      }`
+      `https://api.themoviedb.org/3/search/movie?query=${queryCurrent}&include_adult=false&language=en-US&page=${page}`,
+      {
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_APP_TMDB_API_TOKEN}`,
+        },
+      }
     );
   }
 
@@ -29,24 +44,52 @@ export function MovieSearchEngine() {
           placeholder="Search for a movie" // Placeholder do campo de entrada
         />
         {/* Botão que chama a função searchMovies quando clicado */}
-        <Button onClick={searchMovies} disabled={query.length < 3}>Search</Button>{" "}
+        <Button onClick={() => searchMovies()} disabled={query?.length < 3}>
+          Search
+        </Button>{" "}
         <Content
-          error={error}
+          error={error} //todo exibir mensagem de erro
           loading={loading}
           data={data}
-          renderContent={(data) => (
-            <MoviesContainer>
-              {data.Search &&
-                data.Search.map(
-                  (
-                    movie // Verifica se há filmes e os mapeia para exibir MovieCard
-                  ) => <Movie key={movie.imdbID} movie={movie} /> //todo exibir mensagem de erro
-                )}
-            </MoviesContainer>
-          )}
+          renderContent={(data) =>
+            data?.results?.length > 0 && (
+              <>
+                <p>Results for {queryCurrent}</p>
+                <MoviesContainer>
+                  {data.results.map(
+                    (
+                      movie // Verifica se há filmes e os mapeia para exibir MovieCard
+                    ) => (
+                      <Movie key={movie.id} movie={movie} />
+                    )
+                  )}
+                </MoviesContainer>
+                <PaginationContainer>
+                  <NavPage>
+                    <Button
+                      disabled={data.page === 1}
+                      onClick={() => pagination(data.page - 1)}
+                    >
+                      Previous
+                    </Button>
+                    <p>{data.page}</p>
+                    <Button
+                      disabled={data.page === data.total_pages}
+                      onClick={() => pagination(data.page + 1)}
+                    >
+                      Next
+                    </Button>
+                  </NavPage>
+                  <Total>
+                    <p>Total page: {data.total_pages}</p>
+                    <p>Total results: {data.total_results}</p>
+                  </Total>
+                </PaginationContainer>
+              </>
+            )
+          }
           errorMessage={error}
         />
-        
       </Container>
     </div>
   );
