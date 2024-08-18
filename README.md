@@ -2,7 +2,7 @@
 
 ## Instalação
 
-1. **Clone o repositório**: `git clone <URL_DO_REPOSITORIO>`
+1. **Clone o repositório**: `git clone <https://github.com/SamilisBrito/multi-app-tarefa-5.git>`
 2. **Instale as dependências**: `npm install`
 3. **Comandos principais**:
    - `npm run dev`: Inicia o servidor de desenvolvimento.
