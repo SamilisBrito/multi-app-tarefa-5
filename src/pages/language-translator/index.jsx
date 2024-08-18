@@ -4,6 +4,7 @@ import { Content } from "../../components/content";
 import useFetch from "../../custom-hooks/useFetch";
 import { Select } from "./components/select";
 import { TranslatedText } from "./components/select/style";
+import { Head } from "../../custom-hooks/Head";
 
 const LANGUAGE_OPTIONS = [
   { text: "English", value: "en" },
@@ -27,46 +28,54 @@ export function LanguageTranslator() {
     );
   }
   return (
-    <Container>
-      <Title>Language Translator</Title>
-      <div>
-        <Select
-          label={"Source Language"}
-          selectedValue={sourceLang}
-          setSelectedValue={setSourceLang}
-          options={LANGUAGE_OPTIONS}
-        />
-      </div>
-      <div>
-        <Select
-          label={"Target Language"}
-          selectedValue={targetLang}
-          setSelectedValue={setTargetLang}
-          options={LANGUAGE_OPTIONS}
-        />
-      </div>
-      <Input
-        type="text"
-        value={text} // Valor do campo de entrada é ligado ao estado text
-        onChange={(e) => setText(e.target.value)} // Atualiza o estado text conforme o usuário digita
-        placeholder="Enter text to translate" // Placeholder do campo de entrada
+    <>
+      <Head
+        title="Language Translator"
+        description="Language Translator: Translate texts between different languages ​​quickly and accurately."
       />
-      {/* Botão que chama a função translateText quando clicado */}
-      <Button onClick={translateText} disabled={!text.length != 0}>
-        Translate
-      </Button>{" "}
-      {/* Condicional que exibe o texto traduzido se translatedText não for vazio */}
-      {text && (
-        <Content
-          error={error} //todo exibir mensagem de erro
-          loading={loading}
-          data={data}
-          renderContent={(data) => (
-            <TranslatedText>{data.responseData.translatedText}</TranslatedText>
-          )}
-          errorMessage={error}
+      <Container>
+        <Title>Language Translator</Title>
+        <div>
+          <Select
+            label={"Source Language"}
+            selectedValue={sourceLang}
+            setSelectedValue={setSourceLang}
+            options={LANGUAGE_OPTIONS}
+          />
+        </div>
+        <div>
+          <Select
+            label={"Target Language"}
+            selectedValue={targetLang}
+            setSelectedValue={setTargetLang}
+            options={LANGUAGE_OPTIONS}
+          />
+        </div>
+        <Input
+          type="text"
+          value={text} // Valor do campo de entrada é ligado ao estado text
+          onChange={(e) => setText(e.target.value)} // Atualiza o estado text conforme o usuário digita
+          placeholder="Enter text to translate" // Placeholder do campo de entrada
         />
-      )}
-    </Container>
+        {/* Botão que chama a função translateText quando clicado */}
+        <Button onClick={translateText} disabled={!text.length != 0}>
+          Translate
+        </Button>{" "}
+        {/* Condicional que exibe o texto traduzido se translatedText não for vazio */}
+        {text && (
+          <Content
+            error={error} //todo exibir mensagem de erro
+            loading={loading}
+            data={data}
+            renderContent={(data) => (
+              <TranslatedText>
+                {data.responseData.translatedText}
+              </TranslatedText>
+            )}
+            errorMessage={error}
+          />
+        )}
+      </Container>
+    </>
   );
 }

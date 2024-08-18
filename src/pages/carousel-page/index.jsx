@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Item } from "./components/carousel-item";
 import { CarouselContainer, CustomCarousel } from "./style";
+import { Head } from "../../custom-hooks/Head";
 
 const itens = [
   { id: 0, title: "QR Code Generator", route: "/qr-code-generator" },
@@ -24,26 +25,32 @@ export function CarouselPage() {
   };
 
   return (
-    <CarouselContainer>
-      <CustomCarousel
-        showArrows={true}
-        showThumbs={false}
-        infiniteLoop={true}
-        autoPlay={true}
-        interval={5000}
-        selectedItem={carouselIndex}
-        onChange={(index) => setCarouselIndex(index)}
-      >
-        {itens.map(({ id, title, route }) => (
-          <Item
-            key={id}
-            id={id}
-            title={title}
-            route={route}
-            handleAccess={handleAccess}
-          />
-        ))}
-      </CustomCarousel>
-    </CarouselContainer>
+    <>
+      <Head
+        title="Carosel"
+        description="Carousel: Display a series of images or content in a responsive and interactive slideshow format."
+      />
+      <CarouselContainer>
+        <CustomCarousel
+          showArrows={true}
+          showThumbs={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={5000}
+          selectedItem={carouselIndex}
+          onChange={(index) => setCarouselIndex(index)}
+        >
+          {itens.map(({ id, title, route }) => (
+            <Item
+              key={id}
+              id={id}
+              title={title}
+              route={route}
+              handleAccess={handleAccess}
+            />
+          ))}
+        </CustomCarousel>
+      </CarouselContainer>
+    </>
   );
 }

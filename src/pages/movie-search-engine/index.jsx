@@ -4,6 +4,7 @@ import { Content } from "../../components/content";
 import useFetch from "../../custom-hooks/useFetch";
 import { Movie } from "./components/movie";
 import { MoviesContainer, NavPage, PaginationContainer, Total } from "./style";
+import { Head } from "../../custom-hooks/Head";
 
 // Componente principal MovieSearchEngine
 export function MovieSearchEngine() {
@@ -34,7 +35,11 @@ export function MovieSearchEngine() {
   }
 
   return (
-    <div>
+    <>
+      <Head
+        title="Movie Search Engine"
+        description="Movie Search Engine: Search detailed movie information using the TMDB API."
+      />
       <Container>
         <Title>Movie Search Engine</Title>
         <Input
@@ -93,6 +98,6 @@ export function MovieSearchEngine() {
           errorMessage={error}
         />
       </Container>
-    </div>
+    </>
   );
 }

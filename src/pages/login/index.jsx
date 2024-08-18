@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContainer, LoginForm } from "./style";
 import { Button, Input } from "../../assets/style-global";
+import { Head } from "../../custom-hooks/Head";
 
 // Função para criar um JWT simples
 const createJWT = (payload) => {
@@ -45,24 +46,30 @@ export function Login() {
   };
 
   return (
-    <LoginContainer>
-      <LoginForm onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <Input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        />
-        <Input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        {error && <p>{error}</p>}
-        <Button type="submit">Login</Button>
-      </LoginForm>
-    </LoginContainer>
+    <>
+      <Head
+        title="Login"
+        description="Login: Access your account securely using your credentials."
+      />
+      <LoginContainer>
+        <LoginForm onSubmit={handleSubmit}>
+          <h2>Login</h2>
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+          />
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          {error && <p>{error}</p>}
+          <Button type="submit">Login</Button>
+        </LoginForm>
+      </LoginContainer>
+    </>
   );
 }

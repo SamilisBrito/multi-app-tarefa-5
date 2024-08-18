@@ -5,6 +5,7 @@ import { Button, Container, Input, Title } from "../../assets/style-global";
 import { Content } from "../../components/content";
 import useFetch from "../../custom-hooks/useFetch";
 import { EditInput, TaskItem, TaskList } from "./style";
+import { Head } from "../../custom-hooks/Head";
 // Importa a biblioteca styled-components para criar componentes estilizados.
 
 // Define a URL da API que será usada para obter, adicionar, editar e excluir tarefas.
@@ -83,56 +84,62 @@ export function TodoApp() {
 
   // Retorna o JSX que define o layout e comportamento do componente.
   return (
-    <Container>
-      <Title>Todo App</Title> {/* Exibe o título do aplicativo de tarefas */}
-      <Input
-        type="text"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder="Add a new task"
+    <>
+      <Head
+        title="Todo App"
+        description="Todo App: Manage your tasks efficiently with an intuitive interface."
       />
-      <Button onClick={addTask} disabled={!task.length != 0}>
-        Add Task
-      </Button>
-      {errorAdd ||
-        errorDelete ||
-        (errorUpdate && <p>Error executing action</p>)}
-      <TaskList>
-        <Content
-          error={error}
-          loading={loading}
-          data={data}
-          renderContent={(data) =>
-            data.map((task) => (
-              <TaskItem key={task.id}>
-                {editingTaskId === task.id ? (
-                  <>
-                    <EditInput
-                      type="text"
-                      value={editingTaskText}
-                      onChange={(e) => setEditingTaskText(e.target.value)}
-                    />
-                    <button onClick={() => updateTask(task.id)}>Save</button>
-                  </>
-                ) : (
-                  <>
-                    {task.text}
-                    <div>
-                      <button onClick={() => editTask(task.id, task.text)}>
-                        Edit
-                      </button>
-                      <button onClick={() => deleteTask(task.id)}>
-                        Delete
-                      </button>
-                    </div>
-                  </>
-                )}
-              </TaskItem>
-            ))
-          }
-          errorMessage={error}
+      <Container>
+        <Title>Todo App</Title> {/* Exibe o título do aplicativo de tarefas */}
+        <Input
+          type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          placeholder="Add a new task"
         />
-      </TaskList>
-    </Container>
+        <Button onClick={addTask} disabled={!task.length != 0}>
+          Add Task
+        </Button>
+        {errorAdd ||
+          errorDelete ||
+          (errorUpdate && <p>Error executing action</p>)}
+        <TaskList>
+          <Content
+            error={error}
+            loading={loading}
+            data={data}
+            renderContent={(data) =>
+              data.map((task) => (
+                <TaskItem key={task.id}>
+                  {editingTaskId === task.id ? (
+                    <>
+                      <EditInput
+                        type="text"
+                        value={editingTaskText}
+                        onChange={(e) => setEditingTaskText(e.target.value)}
+                      />
+                      <button onClick={() => updateTask(task.id)}>Save</button>
+                    </>
+                  ) : (
+                    <>
+                      {task.text}
+                      <div>
+                        <button onClick={() => editTask(task.id, task.text)}>
+                          Edit
+                        </button>
+                        <button onClick={() => deleteTask(task.id)}>
+                          Delete
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </TaskItem>
+              ))
+            }
+            errorMessage={error}
+          />
+        </TaskList>
+      </Container>
+    </>
   );
 }

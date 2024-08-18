@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Question, Score } from "./style";
 import { Button, Container, Title } from "../../assets/style-global";
+import { Head } from "../../custom-hooks/Head";
 // Importa a biblioteca styled-components para criar componentes estilizados.
-
 
 // Define um array de perguntas, cada uma com a pergunta, opções e resposta correta.
 const QUESTIONS = [
@@ -20,11 +20,10 @@ const QUESTIONS = [
 ];
 
 // Define o componente funcional QuizApp.
-export function QuizApp () {
+export function QuizApp() {
   // Usa o hook useState para criar variáveis de estado para a pontuação e a pergunta atual.
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
 
   // Função que é chamada quando o usuário responde uma pergunta.
   const handleAnswer = (answer) => {
@@ -39,23 +38,29 @@ export function QuizApp () {
 
   // Retorna o JSX que define o layout e comportamento do componente.
   return (
-    <Container>
-      <Title>Quiz App</Title> {/* Exibe o título do aplicativo de quiz */}
-      {currentQuestion < QUESTIONS.length ? ( // Verifica se ainda há perguntas para responder.
-        <div>
-          <Question>{QUESTIONS[currentQuestion].question}</Question>{" "}
-          {/* Exibe a pergunta atual */}
-          {QUESTIONS[currentQuestion].options.map((option) => (
-            <Button key={option} onClick={() => handleAnswer(option)}>
-              {option}
-            </Button> /* Renderiza os botões de opções de resposta */
-          ))}
-        </div>
-      ) : (
-        <Score>
-          Your score: {score}
-        </Score> /* Exibe a pontuação final após responder todas as perguntas */
-      )}
-    </Container>
+    <>
+      <Head
+        title="Quiz App"
+        description="Quiz App: Test your knowledge with interactive quizzes."
+      />
+      <Container>
+        <Title>Quiz App</Title> {/* Exibe o título do aplicativo de quiz */}
+        {currentQuestion < QUESTIONS.length ? ( // Verifica se ainda há perguntas para responder.
+          <div>
+            <Question>{QUESTIONS[currentQuestion].question}</Question>{" "}
+            {/* Exibe a pergunta atual */}
+            {QUESTIONS[currentQuestion].options.map((option) => (
+              <Button key={option} onClick={() => handleAnswer(option)}>
+                {option}
+              </Button> /* Renderiza os botões de opções de resposta */
+            ))}
+          </div>
+        ) : (
+          <Score>
+            Your score: {score}
+          </Score> /* Exibe a pontuação final após responder todas as perguntas */
+        )}
+      </Container>
+    </>
   );
-};
+}
