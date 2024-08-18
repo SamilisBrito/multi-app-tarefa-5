@@ -27,6 +27,7 @@ export function CarouselPage() {
     <CarouselContainer>
       <CustomCarousel
         showArrows={true}
+        showThumbs={false}
         infiniteLoop={true}
         autoPlay={true}
         interval={5000}
