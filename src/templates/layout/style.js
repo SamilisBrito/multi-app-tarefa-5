@@ -28,12 +28,12 @@ export const Footer = styled.div`
   background-color: #2c3e50;
   color: white;
   text-align: center;
-  padding: 10px 0;
+  padding: 0.625rem 0;
   position: absolute;
   bottom: 0;
 
-  @media (max-width: 768px) {
-    padding: 5px 0;
-    font-size: 12px;
+  @media (max-width: 48rem) {
+    padding: 0.3125rem 0;
+    font-size: 0.75rem;
   }
 `;

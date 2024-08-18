@@ -19,8 +19,8 @@ export const CarouselContainer = styled.div`
   width: 80%;
   height: 70%;
   background-color: #2c3e50;
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
   position: relative; 
   z-index: 1; 
 `;

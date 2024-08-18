@@ -14,11 +14,11 @@ export const TaskList = styled.ul`
 // Esse componente estiliza um <li> com fundo, bordas arredondadas, padding, margem, sombra e efeitos de transição.
 export const TaskItem = styled.li`
   background: #f9f9f9; // Define o fundo como um tom muito claro de cinza.
-  border-radius: 5px; // Adiciona bordas arredondadas de 5px.
-  padding: 10px; // Adiciona padding de 10px dentro do item.
-  margin-bottom: 10px; // Adiciona uma margem de 10px abaixo do item.
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Adiciona uma sombra sutil ao redor do item.
-  font-size: 16px; // Define o tamanho da fonte como 16px.
+  border-radius: 0.3125rem; // Adiciona bordas arredondadas de 0.3125rem.
+  padding: 0.625rem; // Adiciona padding de 0.625rem dentro do item.
+  margin-bottom: 0.625rem; // Adiciona uma margem de 0.625rem abaixo do item.
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); // Adiciona uma sombra sutil ao redor do item.
+  font-size: 1rem; // Define o tamanho da fonte como 1rem.
   transition: background-color 0.3s; // Adiciona uma transição suave para a cor de fundo.
   display: flex; // Define o layout como flexbox.
   justify-content: space-between; // Distribui o espaço entre os itens do item.
@@ -31,12 +31,12 @@ export const TaskItem = styled.li`
 
   button {
     // Estiliza os botões dentro do TaskItem.
-    margin-left: 10px; // Adiciona uma margem de 10px à esquerda do botão.
+    margin-left: 0.625rem; // Adiciona uma margem de 0.625rem à esquerda do botão.
     background: transparent; // Define o fundo como transparente.
     border: none; // Remove a borda padrão do botão.
     color: red; // Define a cor do texto como vermelho.
     cursor: pointer; // Define o cursor como uma mão ao passar sobre o botão.
-    font-size: 16px; // Define o tamanho da fonte como 16px.
+    font-size: 1rem; // Define o tamanho da fonte como 1rem.
 
     &:hover {
       // Aplica estilos ao botão quando o cursor está sobre ele.
@@ -48,13 +48,13 @@ export const TaskItem = styled.li`
 // Cria um componente estilizado chamado EditInput usando styled-components.
 // Esse componente estiliza um <input> para edição de tarefas com padding, borda, bordas arredondadas e sombra interna.
 export const EditInput = styled.input`
-  margin-left: 10px; // Adiciona uma margem de 10px à esquerda do input.
-  padding: 6px; // Adiciona padding de 6px dentro do input.
-  border: 1px solid #ccc; // Define uma borda de 1px sólida e cinza clara.
-  border-radius: 5px; // Adiciona bordas arredondadas de 5px.
+  margin-left: 0.625rem; // Adiciona uma margem de 0.625rem à esquerda do input.
+  padding: 0.375rem; // Adiciona padding de 0.375rem dentro do input.
+  border: 0.0625rem solid #ccc; // Define uma borda de 0.0625rem sólida e cinza clara.
+  border-radius: 0.3125rem; // Adiciona bordas arredondadas de 0.3125rem.
   width: 60%; // Define a largura como 60% do contêiner pai.
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); // Adiciona uma sombra interna sutil.
-  font-size: 14px; // Define o tamanho da fonte como 14px.
+  box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); // Adiciona uma sombra interna sutil.
+  font-size: 0.875rem; // Define o tamanho da fonte como 0.875rem.
   transition: border-color 0.3s; // Adiciona uma transição suave para a cor da borda.
 
   &:focus {

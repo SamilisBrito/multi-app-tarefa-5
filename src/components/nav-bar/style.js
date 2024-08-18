@@ -3,17 +3,17 @@ import styled from "styled-components"; // Importa styled-components para estili
 
 // Estiliza a barra de navegação.
 export const NavBar = styled.div`
-  width: 240px;
+  width: 15rem;
   background-color: #2c3e50;
   color: white;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+  padding: 1.25rem;
+  box-shadow: 0.1875rem 0 0.9375rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     width: 100%;
     height: auto;
     position: absolute;
@@ -28,12 +28,12 @@ export const NavBar = styled.div`
 export const NavBarToggle = styled.div`
   display: none;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.25rem;
+  right: 1.25rem;
   cursor: pointer;
   z-index: 1000;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: block;
   }
 `;
@@ -42,10 +42,10 @@ export const NavBarToggle = styled.div`
 export const StyledLink = styled(NavLink)`
   color: white;
   text-decoration: none;
-  padding: 12px;
+  padding: 0.75rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   transition: background-color 0.3s, color 0.3s;
 
   &:hover {
@@ -55,10 +55,12 @@ export const StyledLink = styled(NavLink)`
 `;
 
 export const ButtonLogout = styled.button`
-  margin-top: 20px;
+  padding: 0.75rem;
+  margin-top: 1.25rem;
   color: white;
   background-color: transparent;
   border: none;
+  border-radius: 0.3125rem;
 
   &:hover {
     background-color: #34495e;

@@ -5,32 +5,32 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 2.5rem;
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  max-width: 800px;
-  margin: 30px auto;
+  border-radius: 0.9375rem;
+  box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
+  max-width: 50rem;
+  margin: 1.875rem auto;
   max-height: 100vh;
 `;
 
 // Define o estilo do título
 export const Title = styled.h2`
   color: #333;
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
   text-align: center;
 `;
 
 // Define o estilo do campo de entrada
 export const Input = styled.input`
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.3125rem;
   width: 100%;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
+  box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
   transition: border-color 0.3s;
 
   &:focus {
@@ -41,14 +41,14 @@ export const Input = styled.input`
 
 // Define o estilo do botão
 export const Button = styled.button`
-  padding: 12px 20px; // Adiciona padding de 12px verticalmente e 20px horizontalmente.
+  padding: 0.75rem 1.25rem; // Adiciona padding de 0.75rem verticalmente e 1.25rem horizontalmente.
   background-color: #007bff; // Define a cor de fundo como azul.
   color: white; // Define a cor do texto como branco.
   border: none; // Remove a borda padrão do botão.
-  border-radius: 5px; // Adiciona bordas arredondadas de 5px.
+  border-radius: 0.3125rem; // Adiciona bordas arredondadas de 0.3125rem.
   cursor: pointer; // Define o cursor como uma mão ao passar sobre o botão.
-  font-size: 16px; // Define o tamanho da fonte como 16px.
-  margin: 10px; // Adiciona uma margem de 10px ao redor do botão.
+  font-size: 1rem; // Define o tamanho da fonte como 1rem.
+  margin: 0.625rem; // Adiciona uma margem de 0.625rem ao redor do botão.
   transition: background-color 0.3s, transform 0.3s; // Adiciona uma transição suave para a cor de fundo e transformação.
   display: inline-flex;
   align-items: center;
