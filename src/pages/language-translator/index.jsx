@@ -51,18 +51,22 @@ export function LanguageTranslator() {
         onChange={(e) => setText(e.target.value)} // Atualiza o estado text conforme o usuário digita
         placeholder="Enter text to translate" // Placeholder do campo de entrada
       />
-      <Button onClick={translateText} disabled={!text.length != 0}>Translate</Button>{" "}
       {/* Botão que chama a função translateText quando clicado */}
-      <Content
-        error={error} //todo exibir mensagem de erro
-        loading={loading}
-        data={data}
-        renderContent={(data) => (
-          <TranslatedText>{data.responseData.translatedText}</TranslatedText>
-        )}
-        errorMessage={error}
-      />
+      <Button onClick={translateText} disabled={!text.length != 0}>
+        Translate
+      </Button>{" "}
       {/* Condicional que exibe o texto traduzido se translatedText não for vazio */}
+      {text && (
+        <Content
+          error={error} //todo exibir mensagem de erro
+          loading={loading}
+          data={data}
+          renderContent={(data) => (
+            <TranslatedText>{data.responseData.translatedText}</TranslatedText>
+          )}
+          errorMessage={error}
+        />
+      )}
     </Container>
   );
 }
