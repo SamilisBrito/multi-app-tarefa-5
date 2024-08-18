@@ -11,7 +11,7 @@ export const Container = styled.div`
   box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
   max-width: 50rem;
   margin: 1.875rem auto;
-  max-height: 100vh;
+  max-height: calc(100vh - 200px) ;
 `;
 
 // Define o estilo do título
