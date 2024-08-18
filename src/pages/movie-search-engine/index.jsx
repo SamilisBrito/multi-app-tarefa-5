@@ -44,7 +44,7 @@ export function MovieSearchEngine() {
           placeholder="Search for a movie" // Placeholder do campo de entrada
         />
         {/* Botão que chama a função searchMovies quando clicado */}
-        <Button onClick={() => searchMovies()} disabled={query?.length < 3}>
+        <Button onClick={() => searchMovies()} disabled={query?.length == 0}>
           Search
         </Button>{" "}
         <Content
@@ -52,7 +52,7 @@ export function MovieSearchEngine() {
           loading={loading}
           data={data}
           renderContent={(data) =>
-            data?.results?.length > 0 && (
+            data?.results?.length > 0 ? (
               <>
                 <p>Results for {queryCurrent}</p>
                 <MoviesContainer>
@@ -86,6 +86,8 @@ export function MovieSearchEngine() {
                   </Total>
                 </PaginationContainer>
               </>
+            ) : (
+              <p>No result found</p>
             )
           }
           errorMessage={error}
