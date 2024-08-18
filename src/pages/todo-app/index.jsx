@@ -91,7 +91,9 @@ export function TodoApp() {
         onChange={(e) => setTask(e.target.value)}
         placeholder="Add a new task"
       />
-      <Button onClick={addTask} disabled={!task.length != 0}>Add Task</Button>
+      <Button onClick={addTask} disabled={!task.length != 0}>
+        Add Task
+      </Button>
       {errorAdd ||
         errorDelete ||
         (errorUpdate && <p>Error executing action</p>)}
